@@ -32,10 +32,10 @@ def find_player():
         if 'name' in request.args:
             name = request.args['name']
             player = player.filter_by(name=name)
-        players = player.all()
-        if len(players) == 0:
+        player = player.first()
+        if player is None:
             return error("Not found.", 404)
-        return jsonify({'results': marshal(players, player_marshaller)})
+        return jsonify(marshal(player, player_marshaller))
     else:
         return error("You must include 'device_id' and 'name' in your query.")
 
