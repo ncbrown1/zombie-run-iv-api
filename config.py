@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    SERVER_NAME = '0.0.0.0:80'
+    # SERVER_NAME = '0.0.0.0:80'
     DEBUG = True
     TESTING = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'zriv.db')
