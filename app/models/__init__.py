@@ -21,5 +21,6 @@ player_marshaller = {
     'name': fields.String,
     'hifive_count': fields.Integer,
     'characters': fields.Integer,
+    'powerup_lvl': fields.Integer,
     'scores': fields.List(fields.Nested(score_nest_marshaller))
 }
