@@ -86,6 +86,23 @@ def set_characters(id):
     else:
         return error("Not found.", 404)
 
+@api.route('/players/<int:id>/powerup_lvl', methods=['POST','PUT'])
+def set_powerup_lvl(id):
+    player = Player.query.filter_by(id=id).first()
+    if player is not None:
+        if 'powerup_lvl' in request.args:
+            try:
+                powerup_lvl = int(request.args['powerup_lvl'])
+                player.powerup_lvl = powerup_lvl
+                player.save()
+            except e:
+                return error("'powerup_lvl' must be an integer.")
+        else:
+            return error("'powerup_lvl' must provided in request.")
+        return jsonify(marshal(player, player_marshaller))
+    else:
+        return error("Not found.", 404)
+
 @api.route('/players/<int:id>/scores', methods=['GET'])
 def get_player_scores(id):
     player = Player.query.filter_by(id=id).first()
