@@ -36,7 +36,15 @@ def create_score():
 
             newscore = Score(score, name, device_id)
             newscore.save()
-            return jsonify(marshal(newscore, score_marshaller))
+
+            Q = Score.query.order_by(Score.score.desc())
+            rank = 1
+            for s in Q.all():
+                if s == newscore:
+                    break
+                else:
+                    rank += 1
+            return jsonify({"score":marshal(newscore, score_marshaller),"rank":rank})
         except e:
             return error("'score' must be an integer.")
     else:
