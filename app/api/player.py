@@ -45,7 +45,7 @@ def create_player():
         device_id = request.args['device_id']
         name = request.args['name']
         player = Player.query.filter_by(device_id=device_id).filter_by(name=name).first
-        if player is not None:
+        if player is None:
             player = Player(device_id, name)
             player.save()
         return jsonify(marshal(player, player_marshaller))
