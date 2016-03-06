@@ -44,7 +44,7 @@ def create_player():
     if 'device_id' in request.args and 'name' in request.args:
         device_id = request.args['device_id']
         name = request.args['name']
-        player = Player.query.filter_by(device_id=device_id).filter_by(name=name).first
+        player = Player.query.filter_by(device_id=device_id).filter_by(name=name).first()
         if player is None:
             player = Player(device_id, name)
             player.save()
