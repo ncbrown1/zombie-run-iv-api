@@ -26,12 +26,13 @@ def get_player(id):
 
 @api.route('/players/find', methods=['GET'])
 def find_player():
-    if 'device_id' in request.args:
+    if 'device_id' in request.args and 'name' in request.args:
         device_id = request.args['device_id']
         player = Player.query.filter_by(device_id=device_id)
-        if 'name' in request.args:
-            name = request.args['name']
-            player = player.filter_by(name=name)
+
+        name = request.args['name']
+        player = player.filter_by(name=name)
+
         player = player.first()
         if player is None:
             return error("Not found.", 404)
@@ -59,9 +60,9 @@ def set_hifives(id):
         if 'hifives' in request.args:
             try:
                 hifives = int(request.args['hifives'])
-                player.hifives = hifives
+                player.hifive_count = hifives
                 player.save()
-            except e:
+            except Exception, e:
                 return error("'hifives' must be an integer.")
         else:
             return error("'hifives' must be provided in request.")
@@ -78,7 +79,7 @@ def set_characters(id):
                 characters = int(request.args['characters'])
                 player.characters = characters
                 player.save()
-            except e:
+            except Exception, e:
                 return error("'characters' must be an integer.")
         else:
             return error("'characters' must provided in request.")
@@ -95,7 +96,7 @@ def set_powerup_lvl(id):
                 powerup_lvl = int(request.args['powerup_lvl'])
                 player.powerup_lvl = powerup_lvl
                 player.save()
-            except e:
+            except Exception, e:
                 return error("'powerup_lvl' must be an integer.")
         else:
             return error("'powerup_lvl' must provided in request.")
@@ -112,7 +113,7 @@ def get_player_scores(id):
         if 'limit' in request.args:
             try:
                 limit = int(request.args['limit'])
-            except e:
+            except Exception, e:
                 pass
         scores = scores[:limit]
         return jsonify({'scores': marshal(scores, score_marshaller)})
