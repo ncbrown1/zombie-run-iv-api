@@ -6,6 +6,28 @@ There is no authentication or authorization set up with this API. We are relying
 
 There is code written in C# that consumes this API, located [in this other repository](https://github.com/ncbrown1/zombie-run-iv-api-client). That code is meant to be injected into a Unity (or possibly Unreal Engine) game project so that the game will have access to this API and its data.
 
+## Requirements
+
+* SQLite3
+* Python 2.7
+* (optional) Postgresql
+
+## Testing
+
+Tests are currently located in `test.py`. You can run them as follows:
+1. Clone (or Fork + Clone) this repository
+1. Create a virtualenv, activate it, and install the requirements.txt
+1. Run the tests via `python test.py`
+```
+  $ virtualenv env
+  $ source env/bin/activate
+  $ pip install -r requirements.txt
+  $ python test.py
+```
+
+This creates a test database for each unit test and runs them. A `.` corresponds to a passing test case. An `F` corresponds to a failing test case, which will show the failing test output at the bottom.
+
+
 ## Deployment
 
 1. Clone (or Fork + Clone) this repository
@@ -331,7 +353,7 @@ To deploy on Heroku, simply fork this repo and point your new Heroku app at your
 ```
 
 ## Roadmap
-* Unit Testing
+* ~~Unit Testing :: Done March 8, 2016~~
 
 ## Credits
 Thanks to @colekettler for the [Flask REST API Generator](https://github.com/colekettler/generator-flask-api), which provided this project with the initial project scaffolding.
