@@ -33,11 +33,11 @@ class ApiTestCases(unittest.TestCase):
         """
         self.assertEqual(1,1)
 
-    def test_failing(self):
-        """
-        At least one unit test should fail
-        """
-        self.assertEqual(1,2)
+    # def test_failing(self):
+    #     """
+    #     At least one unit test should fail
+    #     """
+    #     self.assertEqual(1,2)
 
     ###########################################################################
     # ROOT TEST CASES
