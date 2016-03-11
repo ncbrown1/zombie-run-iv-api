@@ -1,4 +1,4 @@
-# Zombie Run IV API
+# Zombie Run IV API [![Build Status](https://travis-ci.org/ncbrown1/zombie-run-iv-api.svg?branch=master)](https://travis-ci.org/ncbrown1/zombie-run-iv-api)
 
 This is a Python Flask web server using Flask-Restful to serve a REST API for the Zombie Run IV Unity game. The API lays on top of the game's database in order to provide operations on the universal data set, such as the list of high scores. We also keep track of individual player statistics and fields, such as powerup level, high five count, and number of unlocked characters. This allows for persistence of game data without having to rely on each computer's local storage.
 
