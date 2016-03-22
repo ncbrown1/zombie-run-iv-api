@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, redirect
 
 
 api = Blueprint('api', __name__)
@@ -11,4 +11,4 @@ from . import score
 
 @api.route('/', methods=['GET'])
 def index():
-	return "Hello, world!"
+	return redirect('/index.html', code=302)
