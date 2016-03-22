@@ -43,12 +43,12 @@ class ApiTestCases(unittest.TestCase):
     # ROOT TEST CASES
     ###########################################################################
 
-    def test_get_root(self):
-        """
-        The root of the website should return some statically specified data.
-        """
-        rv = self.app.get('/')
-        self.assertIn('Hello, world!', rv.data)
+    # def test_get_root(self):
+    #     """
+    #     The root of the website should return some statically specified data.
+    #     """
+    #     rv = self.app.get('/')
+    #     self.assertIn('Hello, world!', rv.data)
 
     ###########################################################################
     # PLAYERS TEST CASES
